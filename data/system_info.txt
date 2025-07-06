@@ -1,0 +1,55 @@
+=== System Information for False Sharing Benchmark ===
+Capture Date: Sat Jul  5 16:01:55 UTC 2025
+
+=== Operating System ===
+OS: Linux
+Kernel: 5.15.167.4-microsoft-standard-WSL2
+Architecture: x86_64
+Hostname: Reyu-Assistant
+Distribution: Ubuntu 24.04.1 LTS
+
+=== Compiler Information ===
+GCC Version: gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+G++ Version: g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+OpenMP Support: 1 flags found
+
+=== CPU Information ===
+CPU Model: Intel(R) Core(TM) 5 120U
+CPU Cores: 12
+CPU Threads: 12
+CPU Frequency: 2495.999 MHz
+Cache Line Size: 64 bytes
+L1 Cache Size: 49152 bytes
+L2 Cache Size: 1310720 bytes
+L3 Cache Size: 12582912 bytes
+
+=== Memory Information ===
+Total Memory: 7974064 kB
+Available Memory: 6862260 kB
+
+=== NUMA Information ===
+NUMA Nodes: 
+NUMA Details:
+No NUMA available on this system
+NUMA details not available
+
+=== Python Environment ===
+Python Version: Python 3.12.3
+Python Location: /home/vkiran/repos/x86_expts/false-sharing-benchmark/.venv/bin/python3
+
+=== Performance Tools ===
+perf: Available ()
+lscpu: Available
+
+=== Current System Load ===
+Load Average:  0.54, 0.28, 0.19
+Uptime: up 10 hours, 22 minutes
+
+=== CPU Power Management ===
+CPU frequency scaling information not available
+
+=== Compiler Configuration ===
+Default C++ Standard: 
+OpenMP Version: 201511
+
+=== End of System Information ===

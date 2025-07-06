@@ -1,0 +1,28 @@
+=== Vector Arithmetic Benchmark Summary ===
+Date: Sat Jul  5 16:01:22 UTC 2025
+System: Ubuntu 24.04.1 LTS
+CPU: Intel(R) Core(TM) 5 120U
+Cache Line: 64 bytes
+
+=== Performance Summary ===
+Threads: 2
+  Average aligned time: 0.004993s
+  Average misaligned time: 0.003843s
+  Average speedup: 0.781x
+
+Threads: 4
+  Average aligned time: 0.004110s
+  Average misaligned time: 0.003260s
+  Average speedup: 0.871x
+
+Threads: 8
+  Average aligned time: 0.004475s
+  Average misaligned time: 0.003414s
+  Average speedup: 0.797x
+
+=== False Sharing Analysis ===
+Total benchmark runs: 15
+Aligned memory with false sharing: 
+Misaligned memory with false sharing: 12
+False sharing rate (aligned): 0.0%
+False sharing rate (misaligned): 80.0%

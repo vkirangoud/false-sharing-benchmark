@@ -3,10 +3,10 @@
 # Vector Arithmetic Benchmark Script
 # Runs comprehensive benchmarks with different thread counts and offsets
 
-BIN="vector_arithmetic_benchmark"
-CSV="benchmark_results.csv"
-PERF_ALIGNED="perf_arithmetic_aligned.txt"
-PERF_MISALIGNED="perf_arithmetic_misaligned.txt"
+BIN="../vector_arithmetic_benchmark"
+CSV="../data/benchmark_results.csv"
+PERF_ALIGNED="../data/perf_arithmetic_aligned.txt"
+PERF_MISALIGNED="../data/perf_arithmetic_misaligned.txt"
 
 # Colors for output
 RED='\033[0;31m'
@@ -35,7 +35,7 @@ print_error() {
 # Check if binary exists
 if [ ! -f "$BIN" ]; then
     print_error "Binary $BIN not found. Building..."
-    g++ -fopenmp -O3 -march=native -std=c++17 -o "$BIN" vector_arithmetic_benchmark.cpp thread_utils.cpp
+    g++ -fopenmp -O3 -march=native -std=c++17 -o "$BIN" ../src/vector_arithmetic_benchmark.cpp ../src/thread_utils.cpp
     if [ $? -ne 0 ]; then
         print_error "Build failed!"
         exit 1
@@ -113,13 +113,13 @@ done
 print_status "Generating performance analysis..."
 
 # Create a summary analysis
-SUMMARY_FILE="benchmark_summary.txt"
+SUMMARY_FILE="../data/benchmark_summary.txt"
 {
     echo "=== Vector Arithmetic Benchmark Summary ==="
     echo "Date: $(date)"
-    echo "System: $(grep 'Distribution:' system_info.txt | cut -d':' -f2 | xargs)"
-    echo "CPU: $(grep 'CPU Model:' system_info.txt | cut -d':' -f2 | xargs)"
-    echo "Cache Line: $(grep 'Cache Line Size:' system_info.txt | cut -d':' -f2 | xargs)"
+    echo "System: $(grep 'Distribution:' ../data/system_info.txt | cut -d':' -f2 | xargs)"
+    echo "CPU: $(grep 'CPU Model:' ../data/system_info.txt | cut -d':' -f2 | xargs)"
+    echo "Cache Line: $(grep 'Cache Line Size:' ../data/system_info.txt | cut -d':' -f2 | xargs)"
     echo ""
     echo "=== Performance Summary ==="
     
@@ -153,14 +153,14 @@ print_status "Performance Summary:"
 cat "$SUMMARY_FILE"
 
 # Generate plots if Python environment is available
-if [ -d ".venv" ] && [ -f "plot_vector_op_benchmark.py" ]; then
+if [ -d "../.venv" ] && [ -f "../plots/plot_vector_op_benchmark.py" ]; then
     print_status "Generating plots..."
-    source .venv/bin/activate
-    python3 plot_vector_op_benchmark.py
+    source ../.venv/bin/activate
+    cd ../plots && python3 plot_vector_op_benchmark.py
     if [ $? -eq 0 ]; then
         print_success "Plots generated successfully!"
         echo "📈 Plot files:"
-        ls -la vec_benchmark_threads_*_with_false_sharing.png 2>/dev/null | awk '{print "  " $9}'
+        ls -la ../plots/vec_benchmark_threads_*_with_false_sharing.png 2>/dev/null | awk '{print "  " $9}'
     else
         print_warning "Plot generation failed"
     fi
@@ -173,8 +173,8 @@ print_success "Benchmark suite completed!"
 echo "📁 Files generated:"
 echo "  - $CSV (detailed results)"
 echo "  - $SUMMARY_FILE (performance summary)"
-echo "  - system_info.txt (system details)"
-echo "  - vec_benchmark_threads_*_with_false_sharing.png (plots)"
+echo "  - ../data/system_info.txt (system details)"
+echo "  - ../plots/vec_benchmark_threads_*_with_false_sharing.png (plots)"
 
 # Clean up temporary files
 rm -f "$PERF_ALIGNED" "$PERF_MISALIGNED" 2>/dev/null 

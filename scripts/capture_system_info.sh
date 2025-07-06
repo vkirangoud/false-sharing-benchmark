@@ -3,7 +3,7 @@
 # System Information Capture Script
 # Captures details about the system where benchmarks are run
 
-OUTPUT_FILE="system_info.txt"
+OUTPUT_FILE="../data/system_info.txt"
 
 echo "=== System Information for False Sharing Benchmark ===" > "$OUTPUT_FILE"
 echo "Capture Date: $(date)" >> "$OUTPUT_FILE"

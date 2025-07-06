@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 # Read the CSV file
-csv_file = 'benchmark_results.csv'
+csv_file = '../data/benchmark_results.csv'
 df = pd.read_csv(csv_file)
 
 # Remove repeated headers if present

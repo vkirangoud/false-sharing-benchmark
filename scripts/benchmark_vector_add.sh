@@ -1,17 +1,17 @@
 #!/bin/bash
 
-SRC="compare_vector_add_alignment.cpp"
-BIN="compare_vec"
-CSV="vec_timing.csv"
-PERF_ALIGNED="perf_aligned.txt"
-PERF_MISALIGNED="perf_misaligned.txt"
+SRC="../src/compare_vector_add_alignment.cpp"
+BIN="../compare_vec"
+CSV="../data/vec_timing.csv"
+PERF_ALIGNED="../data/perf_aligned.txt"
+PERF_MISALIGNED="../data/perf_misaligned.txt"
 
 # Capture system information
 echo "📋 Capturing system information..."
 ./capture_system_info.sh
 
 echo "🔧 Building $SRC..."
-g++ -O3 -fopenmp -std=c++17 "$SRC" thread_utils.cpp -o "$BIN" || { echo "❌ Build failed"; exit 1; }
+g++ -O3 -fopenmp -std=c++17 "$SRC" ../src/thread_utils.cpp -o "$BIN" || { echo "❌ Build failed"; exit 1; }
 
 echo "🚀 Running $BIN..."
 OUTPUT=$(./$BIN)

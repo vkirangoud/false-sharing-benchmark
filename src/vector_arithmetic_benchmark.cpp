@@ -138,7 +138,7 @@ double benchmark_blocked(float* data, int num_threads) {
 
 int main(int argc, char** argv) {
     // Capture system information if not already captured
-    if (system("test -f system_info.txt || ./capture_system_info.sh") != 0) {
+    if (system("test -f ../data/system_info.txt || ../scripts/capture_system_info.sh") != 0) {
         std::cerr << "Warning: Could not capture system information\n";
     }
     
@@ -146,7 +146,7 @@ int main(int argc, char** argv) {
     size_t offset_bytes = 4;
     if (argc > 1) num_threads = std::atoi(argv[1]);
     if (argc > 2) offset_bytes = std::atoi(argv[2]);
-    std::ofstream csv("benchmark_results.csv", std::ios::app);
+    std::ofstream csv("../data/benchmark_results.csv", std::ios::app);
     csv << "threads,offset,aligned_time,misaligned_time,speedup,aligned_false_sharing,misaligned_false_sharing\n";
     std::cout << "🧮 Vector Arithmetic Benchmark\n";
     std::cout << "🧵 Using " << num_threads << " threads (from OMP_NUM_THREADS)\n";
